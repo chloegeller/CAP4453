@@ -12,7 +12,7 @@ double ival[256][256], maxival;
 
 int main(int argc, char *argv[])
 {
-    FILE *fo1, *fo2, *fp1;
+    FILE *fo1, *fo2, *fp1, *fopen();
 
     char *foobar;
     
