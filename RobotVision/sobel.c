@@ -19,7 +19,7 @@ char *argv[];
     char *foobar;
     
     int i, j, p, q,maxR, sum1, sum2, rows, cols;
-    double lengthThreshold,heightThreshold;
+    double lowThreshold,highThreshold;
 
     argc--;
     argv++;
@@ -39,13 +39,13 @@ char *argv[];
     argv++;
     foobar = *argv;
 
-    lengthThreshold = atof(foobar);
+    lowThreshold = atof(foobar);
 
     argc--;
     argv++;
     foobar = *argv;
 
-    heightThreshold = atof(foobar);
+    highThreshold = atof(foobar);
 
     for (i = 0; i < 256; i++)
     {
@@ -123,7 +123,7 @@ char *argv[];
     {
         for (j = 0; j < 256; j++)
         {
-            if(ival[i][j] > lengthThreshold)
+            if(ival[i][j] > lowThreshold)
             {
                 fprintf(fo2,"%c",(char)(255));
             }
@@ -138,7 +138,7 @@ char *argv[];
     {
         for (j = 0; j < 256; j++)
         {
-            if(ival[i][j] > heightThreshold)
+            if(ival[i][j] > highThreshold)
             {
                 fprintf(fo3,"%c",(char)(255));
             }
