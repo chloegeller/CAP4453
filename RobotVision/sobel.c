@@ -17,6 +17,7 @@ char *argv[];
     FILE *fo1, *fo2, *fp1, *fo3, *fopen();
 
     char *foobar;
+    char fileName[50];
     
     int i, j, p, q,maxR, sum1, sum2, rows, cols;
     double lowThreshold,highThreshold;
@@ -31,9 +32,17 @@ char *argv[];
     argv++;
     foobar = *argv;
 
-    fo1 = fopen(foobar, "wb");
-    fo2 = fopen(foobar, "wb");
-    fo3 = fopen(foobar, "wb");
+	sprintf(fileName,"%s%s",foobar,"magnitude.pgm");
+    fo1 = fopen(fileName, "wb");
+    printf("File output: %s\n", fileName);
+
+    sprintf(fileName,"%s%s",foobar,"lowTSH.pgm");
+    fo2 = fopen(fileName, "wb");
+    printf("File output: %s\n", fileName);
+
+    sprintf(fileName,"%s%s",foobar,"highTSH.pgm");
+    fo3 = fopen(fileName, "wb");
+    printf("File output: %s\n", fileName);
     
     argc--;
     argv++;
