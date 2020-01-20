@@ -21,11 +21,17 @@ char *argv[];
     
     int i, j, p, q,maxR, sum1, sum2, rows, cols;
     double lowThreshold,highThreshold;
+    
+
+    if (argc != 5)
+    {
+        printf("Please follow the proper syntax: ./a.out <input.pgm> <output> <lowTSH> <highTSH>");
+        return -1;
+    }
 
     argc--;
     argv++;
     foobar = *argv;
-
     fp1 = fopen(foobar, "rb");
 
     argc--;
@@ -36,24 +42,23 @@ char *argv[];
     fo1 = fopen(fileName, "wb");
     printf("File output: %s\n", fileName);
 
-    argc--;
-    argv++;
-    foobar = *argv;
-
     sprintf(fileName,"%s%s",foobar,"lowTSH.pgm");
     fo2 = fopen(fileName, "wb");
     printf("File output: %s\n", fileName);
-    lowThreshold = atoi(foobar);
-
-    argc--;
-    argv++;
-    foobar = *argv;
 
     sprintf(fileName,"%s%s",foobar,"highTSH.pgm");
     fo3 = fopen(fileName, "wb");
     printf("File output: %s\n", fileName);
 
-    highThreshold = atoi(foobar);
+    argc--;
+    argv++;
+    foobar = *argv;
+    lowThreshold = atof(foobar);
+
+    argc--;
+    argv++;
+    foobar = *argv;
+    highThreshold = atof(foobar);
 
     for (i = 0; i < 256; i++)
     {
@@ -146,7 +151,7 @@ char *argv[];
     {
         for (j = 0; j < 256; j++)
         {
-            if (ival[i][j] < highThreshold)
+            if (ival[i][j] > highThreshold)
             {
                 fprintf(fo3,"%c",(char)(255));
             }
