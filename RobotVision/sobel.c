@@ -36,25 +36,24 @@ char *argv[];
     fo1 = fopen(fileName, "wb");
     printf("File output: %s\n", fileName);
 
+    argc--;
+    argv++;
+    foobar = *argv;
+
     sprintf(fileName,"%s%s",foobar,"lowTSH.pgm");
     fo2 = fopen(fileName, "wb");
     printf("File output: %s\n", fileName);
+    lowThreshold = atoi(foobar);
+
+    argc--;
+    argv++;
+    foobar = *argv;
 
     sprintf(fileName,"%s%s",foobar,"highTSH.pgm");
     fo3 = fopen(fileName, "wb");
     printf("File output: %s\n", fileName);
-    
-    argc--;
-    argv++;
-    foobar = *argv;
 
-    lowThreshold = atof(foobar);
-
-    argc--;
-    argv++;
-    foobar = *argv;
-
-    highThreshold = atof(foobar);
+    highThreshold = atoi(foobar);
 
     for (i = 0; i < 256; i++)
     {
@@ -147,7 +146,7 @@ char *argv[];
     {
         for (j = 0; j < 256; j++)
         {
-            if (ival[i][j] > highThreshold)
+            if (ival[i][j] < highThreshold)
             {
                 fprintf(fo3,"%c",(char)(255));
             }
