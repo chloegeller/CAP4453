@@ -108,15 +108,15 @@ char *argv[];
     rows = 256;
 
     fprintf(fo1, "P5\n");
-    fprintf(fo2, "P5\n");
-    fprintf(fo3, "P5\n");
-
-    fprintf(fo1, "%d %d\n", rows, cols);  
-    fprintf(fo2, "%d %d", rows, cols);
-    fprintf(fo3, "%d %d", rows, cols);
-
+    fprintf(fo1, "%d %d\n", rows, cols);
     fprintf(fo1, "255\n");
+    
+    fprintf(fo2, "P5\n");
+    fprintf(fo2, "%d %d", rows, cols);
     fprintf(fo2, "255\n");
+
+    fprintf(fo3, "P5\n");
+    fprintf(fo3, "%d %d", rows, cols);
     fprintf(fo3, "255\n");
 
     for (i = 0; i < 256; i++)
@@ -132,7 +132,7 @@ char *argv[];
     {
         for (j = 0; j < 256; j++)
         {
-            if(ival[i][j] > lowThreshold)
+            if (ival[i][j] > lowThreshold)
             {
                 fprintf(fo2,"%c",(char)(255));
             }
@@ -147,7 +147,7 @@ char *argv[];
     {
         for (j = 0; j < 256; j++)
         {
-            if(ival[i][j] > highThreshold)
+            if (ival[i][j] > highThreshold)
             {
                 fprintf(fo3,"%c",(char)(255));
             }
