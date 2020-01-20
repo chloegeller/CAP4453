@@ -71,9 +71,9 @@ char *argv[];
 
     maxR = 1;
     
-    for (i = 0; i < 256 - maxR; i++)
+    for (i = maxR; i < 256 - maxR; i++)
     {
-        for (j = 0; j < 256 - maxR; j++)
+        for (j = maxR; j < 256 - maxR; j++)
         {
             sum1 = 0;
             sum2 = 0;
@@ -94,9 +94,9 @@ char *argv[];
 
     maxival = 0;
     
-    for (i = 0; i < 256 - maxR; i++)
+    for (i = maxR; i < 256 - maxR; i++)
     {
-        for (j = 0; j < 256 - maxR; j++)
+        for (j = maxR; j < 256 - maxR; j++)
         {
             ival[i][j] = sqrt((double)((outpicx[i][j] * outpicx[i][j]) + 
                                        (outpicy[i][j] * outpicy[i][j])));
@@ -111,16 +111,16 @@ char *argv[];
     cols = 256;
     rows = 256;
 
-    fprintf(fo1, "P5\n");
-    fprintf(fo1, "%d %d\n", rows, cols);
-    fprintf(fo1, "255\n");
-    
+    fprintf(fo1, "P5\n"); 
     fprintf(fo2, "P5\n");
-    fprintf(fo2, "%d %d", rows, cols);
-    fprintf(fo2, "255\n");
-
     fprintf(fo3, "P5\n");
-    fprintf(fo3, "%d %d", rows, cols);
+
+    fprintf(fo1, "%d %d\n", rows, cols);
+    fprintf(fo2, "%d %d\n", rows, cols);
+    fprintf(fo3, "%d %d\n", rows, cols);
+
+    fprintf(fo1, "255\n");
+    fprintf(fo2, "255\n");
     fprintf(fo3, "255\n");
 
     for (i = 0; i < 256; i++)
@@ -136,6 +136,8 @@ char *argv[];
     {
         for (j = 0; j < 256; j++)
         {
+            //ival[i][j] = (ival[i][j] / lowThreshold + maxival) * 255;
+            
             if (ival[i][j] > lowThreshold)
             {
                 fprintf(fo2,"%c",(char)(255));
@@ -151,9 +153,11 @@ char *argv[];
     {
         for (j = 0; j < 256; j++)
         {
+            //ival[i][j] = (ival[i][j] / highThreshold + maxival) * 255;
+
             if (ival[i][j] > highThreshold)
             {
-                fprintf(fo3,"%c",(char)(255));
+                fprintf(fo3,"%c", (char)(255));
             }
             else
             {
