@@ -12,20 +12,20 @@
 #define WHITE 255
 #define BLACK 0
 
-double xOutpic[PICSIZE][PICSIZE];
-double yOutpic[PICSIZE][PICSIZE];
+double xOutput[PICSIZE][PICSIZE];
+double yOutput[PICSIZE][PICSIZE];
 double xMask[MAXMASK][MAXMASK];
 double yMask[MAXMASK][MAXMASK];
 double xConv[PICSIZE][PICSIZE];
 double yConv[PICSIZE][PICSIZE];
-double ival[PICSIZE][PICSIZE], mag[PICSIZE][PICSIZE];
+double ival[PICSIZE][PICSIZE];
+double mag[PICSIZE][PICSIZE];
 
-
-int outputPeaks[PICSIZE][PICSIZE];
-int outputFinal[PICSIZE][PICSIZE];
+int peaksOutput[PICSIZE][PICSIZE];
+int finalOutput[PICSIZE][PICSIZE];
 int pic[PICSIZE][PICSIZE];
 
-void recurse(int i, int j, int loTSH)
+void loop(int i, int j, int loTSH)
 {
     int p, q;
 
@@ -33,11 +33,11 @@ void recurse(int i, int j, int loTSH)
     {
         for (q = -1; q <= 1; q++)
         {
-            if (outputPeaks[i + p][j + q] == WHITE)
+            if (peaksOutput[i + p][j + q] == WHITE)
             {
-                outputPeaks[i + p][j + q] = BLACK;
-                outputFinal[i + p][j + q] = WHITE;
-                recurse(i + p, j + q, loTSH);
+                peaksOutput[i + p][j + q] = BLACK;
+                finalOutput[i + p][j + q] = WHITE;
+                loop(i + p, j + q, loTSH);
             }
         }
     }
@@ -144,8 +144,8 @@ int main(int argc, char *argv[])
                 }
             }
 
-            xOutpic[i][j] = xSum;
-            yOutpic[i][j] = ySum;
+            xOutput[i][j] = xSum;
+            yOutput[i][j] = ySum;
             xConv[i][j] = xSum;
             yConv[i][j] = ySum;
         }
@@ -157,8 +157,8 @@ int main(int argc, char *argv[])
     {
         for (j = maxR; j < PICSIZE - maxR; j++)
         {
-            ival[i][j] = sqrt((double)((xOutpic[i][j] * xOutpic[i][j]) + 
-                             (yOutpic[i][j] * yOutpic[i][j])));
+            ival[i][j] = sqrt((double)((xOutput[i][j] * xOutput[i][j]) + 
+                             (yOutput[i][j] * yOutput[i][j])));
 
             if (ival[i][j] > maxival)
             {
@@ -190,28 +190,28 @@ int main(int argc, char *argv[])
             {
                 if ((mag[i][j] > mag[i][j - 1]) && (mag[i][j] > mag[i][j + 1]))
                 {
-                    outputPeaks[i][j] = WHITE;
+                    peaksOutput[i][j] = WHITE;
                 }
             }
             else if ((slope <= 2.4142) && (slope > .4142))
             {
                 if ((mag[i][j] > mag[i - 1][j - 1]) && (mag[i][j] > mag[i + 1][j + 1]))
                 {
-                    outputPeaks[i][j] = WHITE;
+                    peaksOutput[i][j] = WHITE;
                 }
             }
             else if ((slope <= -.4142) && (slope > -2.4142))
             {
                 if ((mag[i][j] > mag[i + 1][j - 1]) && (mag[i][j] > mag[i - 1][j + 1]))
                 {
-                    outputPeaks[i][j] = WHITE;
+                    peaksOutput[i][j] = WHITE;
                 }
             }
             else
             {
                 if((mag[i][j] > mag[i - 1][j]) && (mag[i][j] > mag[i + 1][j]))
                 {
-                    outputPeaks[i][j] = WHITE;
+                    peaksOutput[i][j] = WHITE;
                 }
             }
         }
@@ -230,7 +230,7 @@ int main(int argc, char *argv[])
     {
         for (j = 0; j < PICSIZE; j++)
         {
-            if (outputPeaks[i][j] == WHITE)
+            if (peaksOutput[i][j] == WHITE)
             {
                 fprintf(fo2,"%c",(char)((int)(WHITE)));
             }
@@ -251,7 +251,7 @@ int main(int argc, char *argv[])
 
     area = (percentage / MAXMASK) * (PICSIZE * PICSIZE);
 
-    for (tsh = WHITE; tsh > 0; t--)
+    for (tsh = WHITE; tsh > 0; tsh--)
     {
         sum += histogram[tsh];
 
@@ -264,6 +264,9 @@ int main(int argc, char *argv[])
     hiTSH = tsh;
     loTSH = hiTSH * 0.35;
 
+    loTSH = 0.0;
+
+    printf("Percentage value: %d\n", percentage);
     printf("High treshold value: %d\n", hiTSH);
     printf("Low threshold value: %d\n", loTSH);
 
@@ -271,18 +274,18 @@ int main(int argc, char *argv[])
     {
         for (j = 0; j < PICSIZE; j++)
         {
-            if (outputPeaks[i][j] == WHITE)
+            if (peaksOutput[i][j] == WHITE)
             {
                 if (mag[i][j] > hiTSH)
                 {
-                    outputPeaks[i][j] = BLACK;
-                    outputFinal[i][j] = WHITE;
-                    recurse(i, j, loTSH);
+                    peaksOutput[i][j] = BLACK;
+                    finalOutput[i][j] = WHITE;
+                    loop(i, j, loTSH);
                 }
                 else if (mag[i][j] < loTSH)
                 {
-                    outputPeaks[i][j] = BLACK;
-                    outputFinal[i][j] = BLACK;
+                    peaksOutput[i][j] = BLACK;
+                    finalOutput[i][j] = BLACK;
                 }
             }
         }
@@ -292,7 +295,7 @@ int main(int argc, char *argv[])
     {
         for (j = 0; j < PICSIZE; j++)
         {
-            if (outputFinal[i][j] == WHITE)
+            if (finalOutput[i][j] == WHITE)
             {
                 fprintf(fo3,"%c",(char)((int)(WHITE)));
             }
