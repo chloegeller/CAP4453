@@ -1,3 +1,7 @@
+// Chloe Geller
+// CAP 4453 - Spring 2020
+// Assignment 1 - Part A
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
