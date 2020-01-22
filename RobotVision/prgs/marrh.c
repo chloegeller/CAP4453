@@ -264,6 +264,8 @@ int main(int argc, char *argv[])
     hiTSH = tsh;
     loTSH = hiTSH * 0.35;
 
+    loTSH = 0.0;
+
     printf("Percentage value: %d\n", percentage);
     printf("High treshold value: %d\n", hiTSH);
     printf("Low threshold value: %d\n", loTSH);
