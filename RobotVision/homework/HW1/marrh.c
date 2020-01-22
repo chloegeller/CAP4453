@@ -55,6 +55,9 @@ int main(int argc, char *argv[])
     int i, j, p, q, tsh, maxR, xCent, yCent, sum;
     int rows = PICSIZE, cols = PICSIZE, hiTSH, loTSH, histogram[PICSIZE];
 
+    printf("Please enter your desired value for a percentage:");
+    scanf("%lf", &percentage);
+
     argc--; 
     argv++;
     foobar = *argv;
@@ -81,18 +84,6 @@ int main(int argc, char *argv[])
     fo3 = fopen(fileName, "wb");
     printf("File output: %s\n", fileName);
 
-    fprintf(fo1,"P5\n");
-    fprintf(fo1,"%d %d\n", rows, cols);
-    fprintf(fo1,"255\n");
-
-    fprintf(fo2,"P5\n");
-    fprintf(fo2,"%d %d\n", rows, cols);
-    fprintf(fo2,"255\n");
-
-    fprintf(fo3,"P5\n");
-    fprintf(fo3,"%d %d\n", rows, cols);
-    fprintf(fo3,"255\n");
-
     for (i = 0; i < PICSIZE; i++)
     {
         for (j = 0; j < PICSIZE; j++)
@@ -100,9 +91,6 @@ int main(int argc, char *argv[])
             pic[i][j] = getc(fp1);
         }
     }
-
-    printf("Please enter your desired value for a percentage:");
-    scanf("%lf", &percentage);
 
     maxR = (int)(sigma * 3);
     xCent = (MAXMASK / 2);
@@ -216,6 +204,18 @@ int main(int argc, char *argv[])
             }
         }
     }
+    
+    fprintf(fo1,"P5\n");
+    fprintf(fo1,"%d %d\n", rows, cols);
+    fprintf(fo1,"255\n");
+
+    fprintf(fo2,"P5\n");
+    fprintf(fo2,"%d %d\n", rows, cols);
+    fprintf(fo2,"255\n");
+
+    fprintf(fo3,"P5\n");
+    fprintf(fo3,"%d %d\n", rows, cols);
+    fprintf(fo3,"255\n");
 
     for (i = 0; i < PICSIZE; i++)
     {
@@ -264,7 +264,7 @@ int main(int argc, char *argv[])
     hiTSH = tsh;
     loTSH = hiTSH * 0.35;
 
-    printf("Percentage value: %d\n", percentage);
+    printf("Percentage value: %lf\n", percentage);
     printf("High treshold value: %d\n", hiTSH);
     printf("Low threshold value: %d\n", loTSH);
 
