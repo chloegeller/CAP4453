@@ -394,26 +394,26 @@ int main(int argc, char* argv[]) {
 
 	if(argc>=7 )
 		{
-		if(!stricmp(argv[6],"-t"))
+		if(!_stricmp(argv[6],"-t"))
 			{
 			tabulate_only = 1;
 			}
-		else if(!stricmp(argv[6],"-v"))
+		else if(!_stricmp(argv[6],"-v"))
 			{
 			verify_only = 1;
 			}
-		else if(!stricmp(argv[6],"-tab"))
+		else if(!_stricmp(argv[6],"-tab"))
 			{
 			tabular = 1;
 			feature_table = (int*)malloc(feature_table_size);
 			}
-		else if(!stricmp(argv[6],"-mem"))
+		else if(!_stricmp(argv[6],"-mem"))
 			{
 			tabular = 1;
 			in_memory = 1;
 			feature_table = (int*)malloc(memory_table_size);
 			}
-		else if(!stricmp(argv[6],"-eyefull"))
+		else if(!_stricmp(argv[6],"-eyefull"))
 			{
 			eat_whole_directory = 1;
 			//positive_path = "../eye-pos/full/";
@@ -424,7 +424,7 @@ int main(int argc, char* argv[]) {
 			negative_mask = "../eyes/full/negatives/*.pgm";
 			}
 
-		if(argc>=8 && (!stricmp(argv[7],"-filter")))
+		if(argc>=8 && (!_stricmp(argv[7],"-filter")))
 			{
 			filter_iteration = atoi(argv[8]);
 			data_filter = 1;
@@ -655,7 +655,7 @@ int main(int argc, char* argv[]) {
 
 	if(argc>=7)
 		{
-		if(!stricmp(argv[6],"-load"))
+		if(!_stricmp(argv[6],"-load"))
 			{
 			first_iteration = atoi(argv[7]);
 			load_data = 1;
@@ -2132,12 +2132,12 @@ float weight;
 
 int pos;
 
-if(!stricmp(filename,"pos-weights.txt"))
+if(!_stricmp(filename,"pos-weights.txt"))
     {
     offset = 1;
     len = 2000;
     }
-else if(!stricmp(filename,"neg-weights.txt"))
+else if(!_stricmp(filename,"neg-weights.txt"))
     {
     offset = 2;
     len = 8000;

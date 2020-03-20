@@ -167,7 +167,7 @@ int main(int argc, char **argv) {
         exit(1);
         }
  
-    if(!stricmp(argv[1],"-p"))
+    if(!_stricmp(argv[1],"-p"))
         {
         if(argc!=3)
             {
@@ -178,7 +178,7 @@ int main(int argc, char **argv) {
         add_img = 2000;
         eat_whole_directory = 0;
         }
-    else if(!stricmp(argv[1],"-pp"))
+    else if(!_stricmp(argv[1],"-pp"))
         {
         if(argc!=3)
         {
@@ -189,7 +189,7 @@ int main(int argc, char **argv) {
         add_img = 1;
         eat_whole_directory = 0;
         }
-    else if(!stricmp(argv[1],"-pa"))
+    else if(!_stricmp(argv[1],"-pa"))
     {
         if(argc!=3)
         {
@@ -203,7 +203,7 @@ int main(int argc, char **argv) {
         num_imgs = 2429;
         eat_whole_directory = 0;
     }
-    else if(!stricmp(argv[1],"-na"))
+    else if(!_stricmp(argv[1],"-na"))
     {
         if(argc!=3)
         {
@@ -217,7 +217,7 @@ int main(int argc, char **argv) {
         end_scale = 2.6;
         num_imgs = 5000;
     }
-    else if(!stricmp(argv[1],"-pbf"))
+    else if(!_stricmp(argv[1],"-pbf"))
     {
         if(argc!=3)
         {
@@ -231,7 +231,7 @@ int main(int argc, char **argv) {
         end_scale = 2.6;
         num_imgs = 5000;
     }
-    else if(!stricmp(argv[1],"-pbm"))
+    else if(!_stricmp(argv[1],"-pbm"))
     {
         if(argc!=3)
         {
@@ -245,7 +245,7 @@ int main(int argc, char **argv) {
         end_scale = 2.6;
         num_imgs = 5000;
     }
-    else if(!stricmp(argv[1],"-pw"))
+    else if(!_stricmp(argv[1],"-pw"))
     {
         if(argc!=3)
         {
@@ -259,7 +259,7 @@ int main(int argc, char **argv) {
         end_scale = 2.6;
         num_imgs = 5000;
     }
-	else if(!stricmp(argv[1],"-po"))
+	else if(!_stricmp(argv[1],"-po"))
 	{
 		if(argc!=3)
 		{
@@ -273,7 +273,7 @@ int main(int argc, char **argv) {
 		end_scale = 4.6;
 		num_imgs = 5000;
 	}
-	else if(!stricmp(argv[1],"-pc"))
+	else if(!_stricmp(argv[1],"-pc"))
 	{
 		if(argc!=3)
 		{
@@ -287,7 +287,7 @@ int main(int argc, char **argv) {
 		end_scale = 6.0;
 		num_imgs = 5000;
 	}
-    else if(!stricmp(argv[1],"-n0"))
+    else if(!_stricmp(argv[1],"-n0"))
     {
         if(argc!=3)
         {
@@ -301,7 +301,7 @@ int main(int argc, char **argv) {
         end_scale = 2.6;
         num_imgs = 5000;
     }
-    else if(!stricmp(argv[1],"-ns"))
+    else if(!_stricmp(argv[1],"-ns"))
     {
         if(argc!=3)
         {
@@ -315,7 +315,7 @@ int main(int argc, char **argv) {
         end_scale = 2.6;
         num_imgs = 5000;
     }
-    else if(!stricmp(argv[1],"-no"))
+    else if(!_stricmp(argv[1],"-no"))
     {
         if(argc!=3)
         {
@@ -329,7 +329,7 @@ int main(int argc, char **argv) {
         end_scale = 2.6;
         num_imgs = 5000;
     }
-    else if(!stricmp(argv[1],"-n"))
+    else if(!_stricmp(argv[1],"-n"))
         {
         if(argc!=3)
             {
@@ -340,7 +340,7 @@ int main(int argc, char **argv) {
         add_img = 12000;
         eat_whole_directory = 0;
         }
-    else if(!stricmp(argv[1],"-nn"))
+    else if(!_stricmp(argv[1],"-nn"))
     {
         if(argc!=3)
         {
@@ -351,7 +351,7 @@ int main(int argc, char **argv) {
         add_img = 1;
         eat_whole_directory = 0;
     }
-    else if(!stricmp(argv[1],"-i"))
+    else if(!_stricmp(argv[1],"-i"))
         {
         if(argc!=4)
             {
