@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vdetect", "vdetect\vdetect.vcxproj", "{8644A8E7-6B64-4FD7-BBCC-05E0CFCC6423}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "vdetect", "..\..\..\..\Adaboost\vdetect\vdetect\vdetect.vcxproj", "{8644A8E7-6B64-4FD7-BBCC-05E0CFCC6423}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

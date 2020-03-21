@@ -891,7 +891,7 @@ int apply_thresh_class(struct classifier_struct classifier, double **image,int x
 	int z;
 	static int max_score=-1000;
 	//printf("The threshold is %5.3f \n",classifier.thresh);
-	classifier.thresh = 0.62;
+	classifier.thresh = 0.64;
 	for(z = 0;z < classifier.num_features;z++) {
 		if(z==0) debug = 1;
 		int res = apply_thresh_feature(image, classifier.features[z], x, y,scale);
