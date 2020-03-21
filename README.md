@@ -1,4 +1,5 @@
-# Spring 2020 -- Robot Vision - CAP 4453
+# **Robot Vision - UCF**
+## **CAP 4453 - Spring 2020**
 
 ## [Course Website](http://www.cs.ucf.edu/courses/cap4453/)
 
